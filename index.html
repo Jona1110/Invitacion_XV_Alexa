@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Gran Día de Dairy Alexa</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div id="cover-overlay">
+        <div class="cover-text-container">
+            <h1 class="cinzel-font">Estás invitado al gran día de</h1>
+            <h2 class="cinzel-font">Dairy Alexa</h2>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+
+        <audio id="background-music" src="musica.mp3" loop autoplay></audio>
+        <button id="music-toggle" aria-label="Control de Música">
+            <i class="fas fa-pause"></i> 
+        </button>
+
+        <header class="hero-section">
+            <p class="elegant-text animated-element reveal-bottom">Te invitamos a celebrar</p>
+            <h1 class="cinzel-font main-title animated-element reveal-bottom">El Gran Día de Dairy Alexa</h1>
+            <p class="elegant-text theme-description animated-element reveal-bottom">Inspirado en Cenicienta Live Action</p>
+            
+            <div id="countdown-container" class="animated-element reveal-bottom">
+                <div class="countdown-box magic-glow-light">
+                    <span id="days" class="countdown-number">00</span>
+                    <span class="countdown-label">DÍAS</span>
+                </div>
+                <div class="countdown-box magic-glow-light">
+                    <span id="hours" class="countdown-number">00</span>
+                    <span class="countdown-label">HRS</span>
+                </div>
+                <div class="countdown-box magic-glow-light">
+                    <span id="minutes" class="countdown-number">00</span>
+                    <span class="countdown-label">MIN</span>
+                </div>
+                <div class="countdown-box magic-glow-light">
+                    <span id="seconds" class="countdown-number">00</span>
+                    <span class="countdown-label">SEG</span>
+                </div>
+            </div>
+
+            <p class="elegant-text event-info animated-element reveal-bottom">
+                Sábado 21 de Febrero del 2026
+            </p>
+             <p class="quote elegant-text animated-element reveal-bottom">
+                "Ten valor y sé amable."
+            </p>
+        </header>
+        
+        <div class="section-separator animated-element reveal-scale"></div>
+        
+        <main class="content-container">
+
+            <section class="location-section animated-element reveal-bottom">
+                <h2 class="cinzel-font section-title">Ubicaciones del Evento</h2>
+
+                <div class="location-card glass-effect magic-glow animated-element reveal-left">
+                     <i class="fas fa-church location-icon"></i>
+                    <h3 class="cinzel-font location-title">Templo "Madre Admirable"</h3>
+                    <p class="elegant-text location-time">7:00 PM</p>
+                    <div class="map-embed-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.700340674551!2d-103.17988492619922!3d20.51850690511114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842f4a7459787c1f%3A0x3044b914080c0df!2sParroquia%20Madre%20Admirable!5e0!3m2!1ses-419!2smx!4v1763496520787!5m2!1ses-419!2smx" 
+                            width="100%" 
+                            height="200"
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <a href="https://maps.app.goo.gl/abcd1234" target="_blank" class="map-button">
+                        Abrir en Google Maps
+                    </a>
+                </div>
+
+                <div class="location-card glass-effect magic-glow animated-element reveal-right">
+                    <i class="fas fa-champagne-glasses location-icon"></i>
+                    <h3 class="cinzel-font location-title">Salón "Aura Lounge"</h3>
+                    <p class="elegant-text location-time">Continuación del festejo</p>
+                    <div class="map-embed-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.784719375165!2d-103.19342982619933!3d20.51504960522724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842f4a6b89c67097%3A0x929c47cc559f030!2sAura%20Lounge!5e0!3m2!1ses-419!2smx!4v1763496609177!5m2!1ses-419!2smx" 
+                            width="100%" 
+                            height="200"
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <a href="https://maps.app.goo.gl/wxyz5678" target="_blank" class="map-button">
+                        Abrir en Google Maps
+                    </a>
+                </div>
+                 <p class="quote elegant-text animated-element reveal-bottom">
+                    "Un sueño es un deseo de tu corazón."
+                </p>
+            </section>
+            
+            <div class="section-separator animated-element reveal-scale"></div>
+            
+            <section class="info-section animated-element reveal-bottom">
+                <h2 class="cinzel-font section-title">Código de Vestimenta</h2>
+                <div class="info-card glass-effect magic-glow">
+                    <i class="fas fa-tshirt info-icon pulse-animation"></i>
+                    <h3 class="cinzel-font info-title">Formal Elegante</h3>
+                    <p class="elegant-text">¡Vístete para el gran baile!</p>
+                    <ul class="elegant-text bullet-list">
+                        <li>**Hombres:** Traje formal (corbata opcional).</li>
+                        <li>**Mujeres:** Vestido de cóctel o largo elegante.</li>
+                        <li>**Colores sugeridos:** Tonos azules, gris plata, dorado o negro elegante.</li>
+                        <li>*Te pedimos amablemente evitar vestir de blanco o crudo.*</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <div class="section-separator animated-element reveal-scale"></div>
+
+            <section class="confirm-section animated-element reveal-bottom">
+                <h2 class="cinzel-font section-title">¡Te Esperamos!</h2>
+                
+                <p class="elegant-text">Tu presencia es nuestro mejor regalo.</p>
+                <p class="elegant-text small-text">Para acceder al salón, genera tus boletos escribiendo el nombre de cada asistente de tu grupo, separado por comas.</p>
+                
+                <form id="rsvp-form" class="rsvp-form animated-element reveal-scale glass-effect magic-glow">
+                    <label for="names" class="elegant-text">Nombres de Asistentes (Ej: Juan Pérez, María Gómez)</label>
+                    <textarea id="names" placeholder="Escribe aquí los nombres completos, separados por coma." required></textarea>
+                    
+                    <button type="submit" class="generate-button magic-glow-green">
+                        <i class="fas fa-magic"></i> Generar Boletos de Entrada
+                    </button>
+                    <p class="elegant-text small-text">Por favor, confirma tu asistencia antes del 1 de Febrero.</p>
+                </form>
+                <div class="decorative-element glass-slipper animated-element reveal-bottom"></div>
+                
+                <div id="ticket-display" class="animated-element reveal-bottom" style="display: none;">
+                    <h3 class="cinzel-font ticket-title">🎟️ Tu Pase de Entrada Real 🏰</h3>
+                    <p class="elegant-text instruction-text">Haz captura de pantalla de cada boleto o usa la opción de impresión / exportar a PDF.</p>
+                    
+                    <button id="print-tickets-button" class="generate-button magic-glow-light print-button">
+                        <i class="fas fa-file-pdf"></i> Imprimir / Exportar a PDF
+                    </button>
+                    
+                    <div id="tickets-container" class="tickets-container">
+                        </div>
+                </div>
+                </section>
+
+            <footer class="footer animated-element reveal-bottom">
+                <p class="elegant-text">¡Te esperamos para vivir este cuento de hadas!</p>
+            </footer>
+        
+        </main>
+        
+        <button id="scroll-to-top" aria-label="Volver arriba">
+            <i class="fas fa-wand-magic-sparkles"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
