@@ -1,0 +1,1248 @@
+/* Reset Básico y Variables */
+:root {
+    --cinderella-blue: #2c5282; /* Azul elegante principal */
+    --cinderella-dark-blue: #0c203b;
+    --cinderella-light-blue: #639bbc;
+    --cinderella-silver: #ececec;
+    --cinderella-glow: #e0f7ff; /* Blanco azulado para brillos */
+    --cinderella-gold: #c7a45a; /* Dorado para el texto Formal/Gala y títulos de Regalos */
+    --whatsapp-green: #25d366;
+    --whatsapp-glow: rgba(37, 211, 102, 0.7); /* Brillo verde para WhatsApp */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tipografías */
+.cinzel-font {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+}
+
+.elegant-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+/* Estilos de Body y Fondo (Cenicienta - Mágico, Degradado Azul, Brillante) */
+body {
+    background: linear-gradient(135deg, var(--cinderella-blue) 0%, var(--cinderella-dark-blue) 100%);
+    color: var(--cinderella-silver);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative; 
+    min-height: 100vh;
+}
+
+/* Efecto de Estrellas/Brillos Sutiles con Animación */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 1px, rgba(255, 255, 255, 0.05) 1px) 0 0 / 20px 20px,
+                radial-gradient(circle, transparent 1px, rgba(255, 255, 255, 0.08) 1px) 10px 10px / 20px 20px;
+    z-index: -1;
+    animation: twinkle 120s linear infinite;
+}
+
+@keyframes twinkle {
+    from { background-position: 0 0, 10px 10px; }
+    to { background-position: 1000px 1000px, 1010px 1010px; } 
+}
+
+/* --- Portada Animada (Overlay) --- */
+#cover-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--cinderella-dark-blue), var(--cinderella-blue));
+    color: var(--cinderella-silver);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0; 
+    transition: opacity 1s ease-in-out;
+}
+
+.cover-text-container {
+    padding: 20px;
+    text-shadow: 0 0 10px var(--cinderella-glow), 0 0 20px var(--cinderella-light-blue);
+    animation: pulseGlow 2s infinite alternate;
+}
+
+.cover-text-container h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.cover-text-container h2 {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    margin-top: 10px;
+}
+
+@keyframes pulseGlow {
+    from { opacity: 0.8; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.02); }
+}
+
+/* --- Estilos del Contenido Principal --- */
+#main-content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 40px 0 30px;
+}
+
+.main-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    color: var(--cinderella-glow);
+    text-shadow: 0 0 15px var(--cinderella-light-blue), 0 0 5px var(--cinderella-blue);
+    margin: 10px 0;
+}
+
+.theme-description, .event-info {
+    letter-spacing: 1px;
+}
+
+.quote {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 30px auto;
+    padding: 0 15px;
+    max-width: 90%;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* --- SEPARADOR TEMÁTICO (Ornamentación) --- */
+.section-separator {
+    width: 80%;
+    max-width: 500px;
+    height: 2px;
+    margin: 40px auto; 
+    position: relative;
+    background: transparent;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Filigrana de brillo con Magic Glow */
+.section-separator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Efecto de línea brillante con estrellas */
+    background: radial-gradient(circle at center, var(--cinderella-glow) 0%, var(--cinderella-light-blue) 10%, transparent 70%);
+    background-size: 100% 2px;
+    background-repeat: repeat-x;
+    box-shadow: 0 0 15px var(--cinderella-light-blue);
+    animation: glowMove 5s infinite alternate;
+}
+
+@keyframes glowMove {
+    from { opacity: 0.7; transform: scaleX(0.95); }
+    to { opacity: 1; transform: scaleX(1.05); }
+}
+
+/* --- Contador Regresivo --- */
+#countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.countdown-box {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: 12px;
+    padding: 10px 15px;
+    text-align: center;
+    flex-basis: 22%; 
+    max-width: 100px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; 
+}
+
+.countdown-box.magic-glow-light {
+    border: 1px solid var(--cinderella-light-blue);
+    box-shadow: 
+        0 0 8px var(--cinderella-light-blue),
+        0 0 4px rgba(255, 255, 255, 0.2) inset;
+}
+
+/* Polvo de Estrellas en Contador */
+.countdown-box:hover::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    box-shadow: 
+        0 0 8px 4px rgba(224, 247, 255, 0.3),
+        0 0 15px 7px rgba(99, 155, 188, 0.2);
+    border-radius: 15px;
+    z-index: -1;
+    animation: shimmer 1.5s infinite alternate;
+}
+
+.countdown-number {
+    display: block;
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    font-weight: 700;
+    color: var(--cinderella-glow);
+    text-shadow: 0 0 5px var(--cinderella-light-blue);
+}
+
+.countdown-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--cinderella-silver);
+    margin-top: 5px;
+}
+
+/* --- Botón de Música --- */
+#music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--cinderella-blue);
+    color: var(--cinderella-glow);
+    border: 2px solid var(--cinderella-light-blue);
+    border-radius: 50%;
+    width: 45px; 
+    height: 45px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 50;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    animation: floatPulse 3s infinite alternate;
+    box-shadow: 
+        0 0 10px var(--cinderella-light-blue), 
+        0 0 20px rgba(0, 191, 255, 0.3);
+}
+
+@keyframes floatPulse {
+    from { transform: translateY(0); box-shadow: 0 0 10px var(--cinderella-light-blue); }
+    to { transform: translateY(-5px) scale(1.05); box-shadow: 0 0 25px var(--cinderella-glow); }
+}
+
+#music-toggle:hover {
+    background-color: var(--cinderella-light-blue);
+    transform: scale(1.1);
+}
+
+/* --- Botón Volver Arriba --- */
+#scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--cinderella-light-blue);
+    color: var(--cinderella-dark-blue);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.6rem; 
+    cursor: pointer;
+    z-index: 40;
+    display: none; 
+    transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+    opacity: 0;
+    box-shadow: 0 0 10px var(--cinderella-glow), 0 0 20px rgba(0, 191, 255, 0.4);
+    text-shadow: 0 0 10px var(--cinderella-glow), 0 0 5px var(--cinderella-light-blue);
+}
+
+#scroll-to-top.show {
+    display: block;
+    opacity: 1;
+}
+
+#scroll-to-top:hover {
+    background-color: var(--cinderella-glow);
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* --- Secciones y Títulos --- */
+.section-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    color: var(--cinderella-glow);
+    margin: 40px 0 20px;
+    text-decoration: underline 3px solid var(--cinderella-light-blue);
+    text-underline-offset: 8px;
+    text-shadow: 0 0 8px rgba(0, 191, 255, 0.4);
+}
+
+/* --- Tarjetas (Ubicaciones / Info) --- */
+.location-section, .info-section, .parents-section, .gift-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.location-card, .info-card, .filigree-card {
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    overflow: visible; 
+    transition: all 0.5s ease;
+}
+
+/* Glass Effect Base */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Magic Glow Intenso (Tarjetas principales) */
+.magic-glow {
+    border: 2px solid var(--cinderella-light-blue);
+    box-shadow: 
+        0 0 15px var(--cinderella-light-blue),
+        0 0 30px var(--cinderella-glow),
+        0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Polvo de Estrellas en Tarjetas */
+.location-card:hover, .info-card:hover, .filigree-card:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 0 25px var(--cinderella-light-blue),
+        0 0 50px var(--cinderella-glow),
+        0 8px 40px rgba(0, 0, 0, 0.7);
+}
+
+.location-card:hover::after, .info-card:hover::after, .filigree-card:hover::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    box-shadow: 
+        0 0 10px 5px rgba(224, 247, 255, 0.3),  
+        0 0 20px 10px rgba(99, 155, 188, 0.2); 
+    border-radius: 18px; 
+    z-index: -1;
+    animation: shimmer 1.5s infinite alternate;
+}
+
+@keyframes shimmer {
+    from { opacity: 0.7; transform: rotate(0deg) scale(1); }
+    to { opacity: 1; transform: rotate(1deg) scale(1.01); } 
+}
+
+/* Estilos de Iconos en Tarjetas de Ubicación/Info */
+.location-icon, .info-icon {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+    color: var(--cinderella-light-blue);
+    opacity: 0.7;
+    text-shadow: 0 0 10px var(--cinderella-glow);
+}
+
+.location-icon {
+    animation: spinGlow 5s linear infinite;
+}
+
+.info-icon {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 3rem;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes spinGlow {
+    0% { transform: rotate(0deg); opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { transform: rotate(360deg); opacity: 0.5; }
+}
+
+@keyframes pulse {
+    from { transform: scale(1); opacity: 0.9; }
+    to { transform: scale(1.05); opacity: 1; }
+}
+
+.location-title, .info-title {
+    font-size: 1.5rem;
+    color: var(--cinderella-glow);
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px var(--cinderella-light-blue); 
+}
+
+.bullet-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+.bullet-list li {
+    margin: 8px 0;
+    position: relative;
+}
+.bullet-list li::before {
+    content: '★';
+    color: var(--cinderella-light-blue);
+    font-size: 0.8em;
+    margin-right: 8px;
+    text-shadow: 0 0 5px var(--cinderella-glow);
+}
+
+.map-embed-container {
+    margin: 15px 0;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 3px solid var(--cinderella-light-blue); 
+    box-shadow: 0 0 15px var(--cinderella-light-blue); 
+}
+
+.map-embed-container iframe {
+    border: none;
+    display: block;
+}
+
+.map-button {
+    display: inline-block;
+    background-color: var(--cinderella-light-blue);
+    color: var(--cinderella-blue);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-family: 'Cinzel', serif;
+}
+
+.map-button:hover {
+    background-color: var(--cinderella-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+}
+
+/* --- ESTILOS: SECCIÓN PADRES Y PADRINOS (Filigrana Clásica) --- */
+.parents-section {
+    padding-top: 20px;
+    gap: 0; 
+}
+
+.filigree-card {
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.12); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Filigrana decorativa superior/inferior */
+.filigree-card::before, .filigree-card::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    height: 10px;
+    /* Dibujo de filigrana con fondo repetido */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="10" viewBox="0 0 300 10"><path fill="%23639bbc" d="M0 5c30 0 45-5 75-5s45 5 75 5 45-5 75-5 45 5 75 5z"/></svg>') repeat-x center;
+    background-size: 150px 10px;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 3px var(--cinderella-glow));
+}
+
+.filigree-card::before {
+    top: 0;
+    transform: translateY(-50%);
+}
+
+.filigree-card::after {
+    bottom: 0;
+    transform: translateY(50%) rotate(180deg);
+}
+
+.filigree-container {
+    display: flex;
+    width: 100%;
+    max-width: 650px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filigree-info-block {
+    flex: 1; 
+    text-align: center;
+    padding: 0 10px;
+}
+
+.filigree-title {
+    font-size: 1.6rem;
+    color: var(--cinderella-light-blue);
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(99, 155, 188, 0.5);
+}
+
+.filigree-name {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 8px 0;
+    color: var(--cinderella-silver);
+}
+
+.filigree-icon-center {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--cinderella-light-blue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--cinderella-glow);
+    background-color: var(--cinderella-blue);
+    box-shadow: 0 0 10px var(--cinderella-glow);
+    flex-shrink: 0;
+    margin: 0 15px; 
+}
+
+@media (max-width: 600px) {
+    .filigree-container {
+        flex-direction: column; 
+        gap: 20px; 
+    }
+    .filigree-icon-center {
+        margin: 10px auto; 
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    .filigree-card::before, .filigree-card::after {
+        left: 10px;
+        right: 10px;
+    }
+}
+
+/* --- ESTILOS DE CÓDIGO DE VESTIMENTA (Diseño de Tarjetas Gemelas) --- */
+.clothing-section {
+    text-align: center; /* Centrar el título y el footer */
+}
+
+.clothing-intro-top {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--cinderella-light-blue);
+    margin: 0 0 25px 0;
+    text-align: center;
+}
+
+.clothing-cards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 25px; /* Separación antes del footer */
+}
+
+.clothing-card {
+    padding: 30px 20px;
+    text-align: center; /* Centrar el contenido de la tarjeta */
+    max-width: 300px;
+    width: 48%; /* Para que quepan dos */
+}
+
+/* ÍCONO GRANDE Y CENTRAL */
+.clothing-icon-large {
+    font-size: 3.5rem; /* Tamaño mucho más grande */
+    color: var(--cinderella-light-blue);
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px var(--cinderella-glow);
+    animation: pulse 2s infinite alternate; /* Reutilizamos la animación de pulso */
+}
+
+.clothing-title-block {
+    font-size: 1.6rem;
+    color: var(--cinderella-glow);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+.clothing-subtitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cinderella-gold); 
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px rgba(199, 164, 90, 0.5);
+}
+
+.clothing-list {
+    list-style-type: none; /* Quitamos los puntos de lista */
+    padding: 0;
+    margin-bottom: 10px;
+    text-align: left; /* Alineación del texto de lista */
+    display: inline-block; /* Para que la lista se centre */
+}
+
+.clothing-list li {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    position: relative;
+    text-align: left;
+}
+
+/* Añadimos un pequeño punto de estrella/diamante como bullet point */
+.clothing-list li::before {
+    content: '✦'; 
+    color: var(--cinderella-light-blue);
+    margin-right: 8px;
+    font-size: 0.8em;
+    text-shadow: 0 0 5px var(--cinderella-glow);
+}
+
+
+.clothing-footer {
+    font-size: 0.95rem;
+    font-style: italic;
+    margin-top: 15px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Ajuste para móviles: apilar las tarjetas */
+@media (max-width: 600px) {
+    .clothing-cards-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+    .clothing-card {
+        width: 95%; 
+        max-width: 400px; /* Ancho máximo para el móvil */
+        margin: 0 auto;
+    }
+}
+/* --- FIN ESTILOS DE CÓDIGO DE VESTIMENTA (Diseño de Tarjetas Gemelas) --- */
+
+/* --- ESTILOS: SECCIÓN LLUVIA DE SOBRES (Regalos) --- */
+
+.gift-section {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.gift-card {
+    max-width: 450px;
+    margin: 20px auto; 
+    padding: 30px;
+}
+
+.gift-icon-container {
+    width: 80px;
+    height: 80px;
+    background-color: var(--cinderella-light-blue); /* Fondo azul claro del ícono */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    box-shadow: 0 0 15px var(--cinderella-glow);
+    animation: iconBounce 3s infinite ease-in-out;
+}
+
+.gift-icon {
+    font-size: 3rem;
+    color: var(--cinderella-dark-blue); /* Ícono de sobre oscuro sobre fondo claro */
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.05); }
+}
+
+.gift-title {
+    font-family: 'Cinzel', serif; /* Usamos Cinzel para un título destacado */
+    font-size: 1.8rem;
+    color: var(--cinderella-gold); /* Usamos un toque dorado para el valor */
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.gift-description {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    color: var(--cinderella-silver);
+}
+
+.gift-gratitude {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--cinderella-light-blue);
+}
+
+/* --- ESTILOS PARA EL FORMULARIO DE REGISTRO (RSVP) --- */
+.confirm-section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.rsvp-form {
+    padding: 25px;
+    margin-top: 25px;
+    text-align: left;
+    border-radius: 15px;
+}
+
+.rsvp-form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--cinderella-glow);
+}
+
+.rsvp-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid var(--cinderella-light-blue);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--cinderella-silver);
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    resize: vertical;
+    box-shadow: 0 0 5px var(--cinderella-light-blue) inset;
+    transition: border-color 0.3s;
+}
+
+.rsvp-form textarea:focus {
+    outline: none;
+    border-color: var(--cinderella-glow);
+}
+
+.generate-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--cinderella-light-blue);
+    color: var(--cinderella-dark-blue);
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-family: 'Cinzel', serif;
+    margin-top: 10px;
+}
+
+.generate-button.magic-glow-green {
+    background-color: var(--whatsapp-green);
+    color: white;
+    box-shadow: 
+        0 0 10px var(--whatsapp-glow),
+        0 5px 15px rgba(37, 211, 102, 0.5);
+}
+
+.generate-button:hover {
+    background-color: #128c7e;
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 20px var(--whatsapp-glow),
+        0 8px 20px rgba(37, 211, 102, 0.9);
+}
+
+/* --- ESTILOS: SECCIÓN CONTACTO (Creaciones Reales) --- */
+
+.contact-me-section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+    color: var(--cinderella-light-blue);
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.contact-card {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 35px;
+}
+
+/* Estilos de Icono de Contacto (laptop-code) */
+.contact-icon {
+    font-size: 3rem;
+    color: var(--cinderella-glow);
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px var(--cinderella-light-blue);
+}
+
+.contact-card h3 {
+    font-size: 1.6rem;
+    color: var(--cinderella-gold);
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.contact-text {
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+}
+
+.contact-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 300px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo para el botón de Correo */
+.email-button {
+    background-color: var(--cinderella-light-blue);
+    color: var(--cinderella-dark-blue);
+    box-shadow: 0 0 10px rgba(99, 155, 188, 0.5);
+}
+
+.email-button:hover {
+    background-color: var(--cinderella-glow);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 5px 20px rgba(224, 247, 255, 0.8);
+}
+
+/* Estilo para el botón de WhatsApp (reutilizando variables de green) */
+.whatsapp-button {
+    background-color: var(--whatsapp-green);
+    color: white;
+    box-shadow: 0 0 10px var(--whatsapp-glow);
+}
+
+.whatsapp-button:hover {
+    background-color: #128c7e;
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 20px var(--whatsapp-glow);
+}
+
+.contact-footer {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* --- ESTILOS PARA LA SECCIÓN DE BOLETOS --- */
+
+#ticket-display {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.ticket-title {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: var(--cinderella-glow);
+    text-shadow: 0 0 10px var(--cinderella-light-blue);
+}
+
+.instruction-text {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.tickets-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px; 
+    margin-top: 15px;
+}
+
+.print-button {
+    background-color: var(--cinderella-light-blue) !important;
+    color: var(--cinderella-dark-blue) !important;
+    margin-bottom: 25px;
+    font-size: 1rem !important;
+    text-transform: uppercase;
+}
+.print-button:hover {
+    background-color: var(--cinderella-glow) !important;
+}
+
+/* --- ESTILOS PARA LOS BOLETOS HORIZONTALES (NUEVO DISEÑO) --- */
+.magic-ticket {
+    display: flex; /* Contenedor principal horizontal */
+    width: 600px; /* Ancho fijo para pase de abordar */
+    max-width: 95%; 
+    height: 180px; /* Altura fija */
+    background: linear-gradient(90deg, #1a3556 80%, var(--cinderella-light-blue)); /* Fondo degradado con el área de acceso */
+    border: 3px solid var(--cinderella-light-blue);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 15px var(--cinderella-light-blue), 0 0 30px var(--cinderella-glow);
+    transition: transform 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.magic-ticket:hover {
+    transform: scale(1.03); 
+}
+
+/* Columna Izquierda: Detalles del Boleto */
+.ticket-info-section {
+    flex-grow: 1; 
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.ticket-header {
+    font-size: 0.9rem;
+    color: var(--cinderella-light-blue);
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.ticket-name {
+    font-size: 1.8rem; 
+    color: var(--cinderella-glow);
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--cinderella-light-blue);
+}
+
+.ticket-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px 20px;
+    margin-top: 10px;
+}
+
+.detail-item {
+    text-align: left;
+}
+.detail-label {
+    font-size: 0.7rem;
+    color: var(--cinderella-silver);
+    font-weight: 700;
+    opacity: 0.7;
+    margin-bottom: 2px;
+}
+.detail-value {
+    font-size: 0.9rem;
+    color: var(--cinderella-glow);
+    font-weight: 400;
+}
+
+/* Columna Derecha: Acceso y Código */
+.ticket-access-section {
+    width: 150px; /* Ancho fijo para la sección de corte */
+    background-color: var(--cinderella-light-blue); 
+    color: var(--cinderella-dark-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Línea perforada (vertical en el nuevo diseño) */
+.ticket-perforation {
+    position: absolute;
+    top: 0;
+    left: -2px; /* Posicionado para verse en el borde entre las dos secciones */
+    width: 4px; 
+    height: 100%;
+    background-image: linear-gradient(to bottom, #fff 50%, transparent 50%);
+    background-size: 4px 10px;
+    border: none; 
+    z-index: 10;
+}
+
+.access-icon {
+    font-size: 2.5rem;
+    color: var(--cinderella-dark-blue);
+    margin-bottom: 5px;
+}
+
+.access-code-label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.access-code-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin: 5px 0 10px;
+}
+
+.access-footer {
+    font-size: 0.6rem;
+    opacity: 0.8;
+}
+
+/* Media Query para Responsividad (Celulares - hacer vertical en pantallas pequeñas) */
+@media (max-width: 650px) {
+    .magic-ticket {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+    .ticket-info-section {
+        padding: 20px;
+        text-align: center;
+    }
+    .ticket-details-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        justify-items: center;
+        text-align: center;
+    }
+    .ticket-access-section {
+        width: 100%; 
+        height: 100px; /* Altura fija para la sección de acceso */
+        flex-direction: row; /* Poner el código de acceso en línea */
+        justify-content: space-around;
+        align-items: center;
+    }
+    .ticket-perforation {
+        display: none; /* Ocultar perforación en vista móvil */
+    }
+    .access-icon {
+        font-size: 2rem;
+    }
+    .access-code-value {
+        font-size: 1rem;
+    }
+    .access-footer {
+        display: none; /* Ocultar footer para ahorrar espacio */
+    }
+}
+
+/* --- ESTILOS DE IMPRESIÓN/DESCARGA A PDF (SOLO BOLETOS) --- */
+
+/* 1. Ocultar el mensaje del encabezado de PDF en vista normal */
+.pdf-header-message {
+    display: none;
+}
+
+/* Por defecto, el contenido web debe ser visible */
+.print-hide-group {
+    display: block; 
+}
+
+@media print {
+    /* 1. RESET: Asegurar una base de impresión limpia */
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: auto;
+        background: white !important; /* Fondo blanco para impresión */
+        color: black !important;
+    }
+
+    /* 2. Ocultar el grupo de contenido web que aparece encima de los boletos */
+    .print-hide-group {
+        display: none !important;
+    }
+    
+    /* 3. Ocultar elementos de interacción/navegación de la web (Música, Scroll, Botón de PDF, Instrucciones, Controles) */
+    #music-toggle, 
+    #scroll-to-top, 
+    .footer, 
+    .rsvp-form, 
+    .instruction-text, 
+    .print-button,
+    .contact-me-section, /* Ocultar la sección de contacto */
+    .section-separator:last-of-type, /* Ocultar el último separador que está antes de contacto/footer */
+    .ticket-title { /* Ocultar el título '🎟️ Tu Pase de Entrada Real 🏰' */
+        display: none !important; 
+    }
+
+    /* 4. Mostrar el contenedor principal y la sección de boletos */
+    #main-content {
+        display: block !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        min-height: auto;
+    }
+    
+    #ticket-display,
+    .tickets-container {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* 5. Mostrar el encabezado específico para el PDF */
+    .pdf-header-message {
+        display: block !important;
+        font-size: 2.2rem; 
+        text-align: center;
+        margin: 1cm 0 0.8cm 0; 
+        color: black !important;
+        font-family: 'Cinzel', serif;
+        page-break-after: avoid; 
+        text-transform: uppercase;
+        font-weight: 700;
+        text-shadow: none;
+    }
+    
+    /* 6. Estilos de los boletos para impresión */
+    .magic-ticket {
+        display: flex !important;
+        width: 18cm; 
+        max-width: 95% !important; 
+        height: 6cm; 
+        margin: 0.7cm auto !important; 
+        border: 2px solid #333 !important; 
+        box-shadow: none !important;
+        background: white !important; 
+        transform: none !important;
+        page-break-inside: avoid; 
+        /* IMPRESCINDIBLE: Forzar la impresión de colores de fondo/bordes */
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact; 
+        border-radius: 10px; 
+        background-image: none !important;
+    }
+    
+    .ticket-info-section {
+        background-color: #f0f0f0 !important; /* Fondo gris muy claro */
+        color: black !important;
+        border-right: 2px dashed #666 !important; /* Simular la perforación */
+        padding: 15px 20px !important;
+    }
+    
+    /* Asegurar que el texto sea negro y legible */
+    .ticket-name, .detail-value, .access-code-value, .ticket-header, .detail-label, .access-code-label, .access-footer {
+        color: black !important;
+        text-shadow: none !important;
+    }
+    
+    .ticket-access-section {
+        background-color: #d8e5f8 !important; /* Fondo de acceso ligeramente azul pálido */
+        color: black !important;
+        border-radius: 0 8px 8px 0 !important;
+    }
+    
+    .access-icon {
+        color: #333 !important;
+    }
+    
+    .ticket-perforation {
+        left: 0; 
+        background-image: linear-gradient(to bottom, #333 50%, transparent 50%) !important;
+    }
+
+    @page {
+        margin: 1cm; 
+    }
+}
+
+/* --- ANIMACIONES DE REVELACIÓN (SCROLL) --- */
+
+/* Estado inicial: oculto y preparado para animar */
+.animated-element {
+    opacity: 0;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    /* Esto previene que los elementos ocultos tomen espacio antes de animar */
+    will-change: opacity, transform; 
+}
+
+/* Estado final: visible y con la animación completada */
+.animated-element.visible {
+    opacity: 1;
+    transform: none; /* Regresa a su posición normal */
+}
+
+/* 1. Animación: Revelar desde abajo (Ideal para bloques de texto y secciones) */
+.reveal-bottom {
+    transform: translateY(30px);
+}
+
+/* 2. Animación: Revelar desde la izquierda (Ideal para la primera columna/carta) */
+.reveal-left {
+    transform: translateX(-30px);
+}
+
+/* 3. Animación: Revelar desde la derecha (Ideal para la segunda columna/carta) */
+.reveal-right {
+    transform: translateX(30px);
+}
+
+/* 4. Animación: Revelar con escala (Ideal para separadores y elementos centrales) */
+.reveal-scale {
+    transform: scale(0.9);
+}
+
+/* Ajustes de transición para elementos específicos */
+.main-title {
+    /* La cabecera principal puede ser más rápida o sutil */
+    transition: opacity 1.2s ease-out 0.2s, transform 1.2s ease-out 0.2s; 
+}
+
+/* Ajuste para el contenedor de conteo */
+#countdown-container {
+    transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s; /* Un pequeño retraso */
+}
+
+/* Ajuste para las tarjetas de ubicación */
+.location-card {
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
