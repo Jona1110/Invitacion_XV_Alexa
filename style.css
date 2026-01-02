@@ -1427,4 +1427,32 @@ body::before {
     .btn-pro {
         flex: 1;
     }
+
+}
+
+/* --- BLOQUE DE CORRECCIÓN PARA IPHONE --- */
+
+/* 1. Fondo de seguridad: evita que se vea blanco si el video falla */
+body, #bg-video, #cover-overlay {
+    background-color: #0c203b !important;
+}
+
+/* 2. Ajuste del video para que ocupe toda la pantalla en iOS */
+#bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+}
+
+/* 3. Corrección para el efecto de cristal (difuminado) en Safari de iPhone */
+.glass-effect, .countdown-box, .filigree-card, .info-card, .location-card, .pro-card {
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
 }
